@@ -54,20 +54,25 @@ class ProjetController extends Controller
           $projet->devis_id=1;
           $projet->responsable_id=$responsableId;
           $projet->client_id=1;
-          $files = $request->file('file');
+          
 
           $projet->save();
 
+          $files = $request->file('file');
+
            if(!empty($files)){
           foreach($files as $file){
+          
             $fichier=new Fichier();
              $fichier->nom=$file->getClientOriginalName();
-               $fichier->contenu=file_get_contents($file);
                $fichier->type=$file->getClientOriginalExtension();
                $fichier->projet_id=$projet->id;
+               $fichier->chemin=$file->store('file');
                $fichier->save();
+               
           }
         }
+        
            return redirect('projet');
   }
 
@@ -115,6 +120,21 @@ class ProjetController extends Controller
           //$projet->devis = ($request->input('email'));
           //$projet->responsable = ($request->input('statut'));
           $projet->save();
+
+           $files = $request->file('file');
+
+           if(!empty($files)){
+          foreach($files as $file){
+          
+            $fichier=new Fichier();
+             $fichier->nom=$file->getClientOriginalName();
+               $fichier->type=$file->getClientOriginalExtension();
+               $fichier->projet_id=$projet->id;
+               $fichier->chemin=$file->store('file');
+               $fichier->save();
+               
+          }
+        }
           
           return redirect('projet');
   }

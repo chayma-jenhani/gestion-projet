@@ -1,18 +1,17 @@
-@extends('layouts.menu')
+<@extends('layouts.menu')
 @section('content')
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Gestion Des Projets
-                <small>Gestion des projets</small>
+                Gestion Des Factures
+                <small>Gestion des factures</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
-                <li><a href="/projet">Projets</a></li>
-                <li class="active">Projets</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
+                <li> <a href="/facture">Factures</a></li>
+                <li class="active">Ajouter Facture</li>
             </ol>
         </section>
 
@@ -25,39 +24,39 @@
                     <!-- general form elements -->
                     <div class="box box-primary ">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Nouveau Projet</h3>
+                            <h3 class="box-title">Ajouter Facture</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="/projet" method="POST"  enctype="multipart/form-data">
+                        <form role="form" action="/facture/{{$fact->id}}" method="post">
+                            <input type="hidden" name="_method" value="PUT">
                             {{csrf_field()}}
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label >Titre</label>
-                                        <input type="text" class="form-control" name="titre" placeholder="Enter titre">
-                                        <label >Délai</label>
-                                        <input type="date" class="form-control" name="delai" >
-                                        <label >File input</label>
-                                        <input type="file" name="file[]" multiple>
-
-                                        <label >Description</label>
-                                        <textarea class="form-control" name="description" placeholder="Entrer la description du projet"></textarea>
-                                        <label >Employés</label>
-                             <select multiple class="form-control select2"  name="employe[]">
-                                     @foreach($emp as $value)
-                                  <option>{{$value->nom}}</option>
-                                                @endforeach
-
-                            </select>
-                                        <label >Responsable</label>
-                                    <select  class="form-control select2"  name="responsable">
-                                            @foreach($emp as $value)
+                                       <label >Client</label>
+                                    <select  class="form-control select2"  name="client">
+                                            @foreach($cl as $value)
                                                 <option>{{$value->nom}}</option>
                                             @endforeach
 
                                         </select>
-                                        
+                                        <label >Projet</label>
+                                    <select  class="form-control select2"  name="projet">
+                                            @foreach($projet as $value)
+                                                <option>{{$value->nom}}</option>
+                                            @endforeach
+
+                                        </select>
+                                        <label >Client</label>
+                                    <select  class="form-control select2"  name="devis">
+                                            @foreach($devis as $value)
+                                                <option>{{$value->nom}}</option>
+                                            @endforeach
+
+                                        </select>
+                                        <label >Statut</label>
+                                        <input type="text" class="form-control" name="statut" >
                                         <br>
                                         <div class="box-footer">
 
@@ -85,4 +84,5 @@
     </div>
     <!-- /.content-wrapper -->
 
-@endsection
+
+   @endsection

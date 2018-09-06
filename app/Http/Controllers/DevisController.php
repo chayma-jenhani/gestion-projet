@@ -17,7 +17,7 @@ class DevisController extends Controller
   public function index()
   {
      $d= Devis::all();
-      return view('devis.view', ['devis' => $d]);
+      return view('devis.view', ['devis' => $devis]);
   }
 
   /**
@@ -68,7 +68,7 @@ class DevisController extends Controller
   {
      $cl=Client::all();
           $devis =Devis::find($id);
-          return view('projet.edit', ['devis' => $devis],['cl'=>$cl]);
+          return view('devis.edit', ['devis' => $devis],['cl'=>$cl]);
   }
 
 

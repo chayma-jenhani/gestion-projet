@@ -66,6 +66,14 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+           /* if (strcmp($data['role'],'Admin')!==0) {
+                'est_admin' =>1,}
+                if (strcmp($data['role'],'Chef de Projet')!==0) {
+                'est_responsable' =>1,}
+                if (strcmp($data['role'],'Employe')!==0) {
+                'est_employe' =>1,}
+
+*/            
         ]);
     }
 }

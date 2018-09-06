@@ -6,12 +6,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Gestion des tâches
-                <small>Gestion des tâches</small>
+                Gestion des devis
+                <small>Gestion des devis</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
-                <li class="active">tâches</li>
+                <li class="active">Devis</li>
             </ol>
         </section>
 
@@ -21,9 +21,9 @@
                 <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Liste des tâches</h3>
+                <h3 class="box-title">Liste des devis</h3>
 
-                
+                <a type="button" href="/devis/create" class="btn btn-primary pull-right " ><div class="glyphicon glyphicon-plus"></div> Ajouter un Devis</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -31,12 +31,8 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Titre</th>
-                        <th>Deadline</th>
-                        <th>Statut</th>
-                        <th>Priorité</th>
-                        <th>Projet</th>
-                        
+                        <th>Nom</th>
+                        <th>Client</th>
                         <th>Action</th>
 
                     </tr>
@@ -46,19 +42,16 @@
                     @foreach($tab as $value)
                         <tr>
                             <td>{{ $value->id }}</td>
-                            <td>{{$value->titre }}</td>
-                            <td>{{$value->deadline }}</td>
-                            <td>{{$value->statut }}</td>
-                            <td>{{$value->priorité }}</td>
-                            <td>{{$value->projet->nom}}</td>
+                            <td>{{$value->nom }}</td>
+                            <td>{{$value->client->nom }}</td>
                             
 
                                 <td>
 
-                                    <form action="/tache/{{$value->id}}" method="post">
+                                    <form action="/devis/{{$value->id}}" method="post">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                  <a href="{{url ('tache/'.$value->id.'/edit')}}" class="btn-warning btn glyphicon glyphicon-pencil" ></a>
+                                  <a href="{{url ('devis/'.$value->id.'/edit')}}" class="btn-warning btn glyphicon glyphicon-pencil" ></a>
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
                                      

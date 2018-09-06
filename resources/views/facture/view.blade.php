@@ -6,12 +6,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Gestion des tâches
-                <small>Gestion des tâches</small>
+                Gestion des factures
+                <small>Gestion des factures</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
-                <li class="active">tâches</li>
+                <li class="active">Factures</li>
             </ol>
         </section>
 
@@ -21,9 +21,9 @@
                 <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Liste des tâches</h3>
+                <h3 class="box-title">Liste des factures</h3>
 
-                
+                <a type="button" href="/facture/create" class="btn btn-primary pull-right " ><div class="glyphicon glyphicon-plus"></div> Ajouter une Facture</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -31,12 +31,11 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Titre</th>
-                        <th>Deadline</th>
-                        <th>Statut</th>
-                        <th>Priorité</th>
+                        <th>Date</th>
+                        <th>Client</th>
+                        <th>Devis</th>
                         <th>Projet</th>
-                        
+                        <th>Statut</th>
                         <th>Action</th>
 
                     </tr>
@@ -46,19 +45,19 @@
                     @foreach($tab as $value)
                         <tr>
                             <td>{{ $value->id }}</td>
-                            <td>{{$value->titre }}</td>
-                            <td>{{$value->deadline }}</td>
+                            <td>{{$value->date }}</td>
+                            <td>{{$value->client->nom }}</td>
+                            <td>{{$value->devis->nom }}</td>
+                            <td>{{$value->projet->nom }}</td>
                             <td>{{$value->statut }}</td>
-                            <td>{{$value->priorité }}</td>
-                            <td>{{$value->projet->nom}}</td>
                             
 
                                 <td>
 
-                                    <form action="/tache/{{$value->id}}" method="post">
+                                    <form action="/facture/{{$value->id}}" method="post">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                  <a href="{{url ('tache/'.$value->id.'/edit')}}" class="btn-warning btn glyphicon glyphicon-pencil" ></a>
+                                  <a href="{{url ('facture/'.$value->id.'/edit')}}" class="btn-warning btn glyphicon glyphicon-pencil" ></a>
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
                                      

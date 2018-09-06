@@ -110,7 +110,7 @@ class TacheController extends Controller
   {
       $t=Tache::find($id);
       $t->delete();
-      return redirect('afficheProjet/1');
+      return redirect('projet');
   }
 
   

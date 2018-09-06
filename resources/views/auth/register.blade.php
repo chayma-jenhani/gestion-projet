@@ -78,15 +78,22 @@
         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"   placeholder="Confirmer le mot de passe" required>
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
+       <div class="form-group has-feedback form-group">
+    <label>Role</label>
+         <select multiple class="form-control" id="role" name="role"> 
+                               
+                      <option>Admin</option>
+                        <option>Chef de Projet</option>
+                        <option>Employe</option>
+
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+     
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            
-          </div>
-        </div>
-        <!-- /.col -->
+       
+       
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary ">Inscription</button>
+          <button type="submit" class="btn btn-primary  ">Inscription</button>
         </div>
         <!-- /.col -->
       </div>
