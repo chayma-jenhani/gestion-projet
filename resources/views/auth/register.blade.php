@@ -80,11 +80,12 @@
       </div>
        <div class="form-group has-feedback form-group">
     <label>Role</label>
-         <select multiple class="form-control" id="role" name="role"> 
+         <select class="form-control" name="role" > 
                                
-                      <option>Admin</option>
-                        <option>Chef de Projet</option>
-                        <option>Employe</option>
+                      <option value="admin" >Admin</option>
+                        <option value="responsable" >Chef de Projet</option>
+                        <option value="employe" >Employe</option>
+                      </select>
 
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>

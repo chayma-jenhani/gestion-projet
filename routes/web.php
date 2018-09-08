@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/admin',function () {
-    return view('admin.admin');});
+Route::get('/admin/admin',function () {
+    return view('admin.Accueiladmin');});
 
 Route::resource('client','ClientController');
 
@@ -38,3 +38,4 @@ Route::resource('devis','DevisController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('logout', 'Auth\LoginController@logout');

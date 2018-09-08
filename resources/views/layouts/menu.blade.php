@@ -90,7 +90,7 @@
                             </li>
                         @endif
                     <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i> Paramètres</a>
+                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i>Paramètres</a>
                     </li>
 
                 </ul>
@@ -107,12 +107,12 @@
             <ul class="sidebar-menu" data-widget="tree">
 
                 <li>
-                    <a href="#">
+                    <a href="/admin/admin">
                         <i class="fa fa-dashboard"></i> <span>Tableau de bord</span>
                     </a>
 
                 </li>
-                 @if (Auth::user()->est_admin==1)
+                 @if (Auth::user()->role==='admin')
                  <li  class="{{ Request::is('client*') ? 'active' : '' }}">
                     <a href="/client" >
                     
@@ -130,6 +130,11 @@
                     </a>
 
                 </li>
+                @endif
+
+                @if ((Auth::user()->role==='employe')||(Auth::user()->role==='admin')
+                ||(Auth::user()->role==='responsable'))
+              
                 <li class="treeview {{ Request::is('projet*')||Request::is('tache*')||Request::is('devis*')||Request::is('facture*')? 'active' : '' }}">
                     <a href="#">
                         <i class="fa fa-pencil-square-o"></i>
@@ -138,11 +143,14 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
+
                     <ul class="treeview-menu">
+
                         <li  class="{{ Request::is('projet*') ? 'active' : '' }}">
                         <a href="/projet"><i class="fa fa-list-ul"></i> Liste des projets</a></li>
                         <li  class="{{ Request::is('tache*') ? 'active' : '' }}">
                         <a href="/tache"><i class="fa fa-pie-chart"></i> Taches</a></li>
+                        
                         <li  class="{{ Request::is('facture*') ? 'active' : '' }}">
                         <a href="/facture"><i class="fa fa-money"></i> Factures</a></li>
                         <li  class="{{ Request::is('facture*') ? 'active' : '' }}">
@@ -151,7 +159,7 @@
                     </ul>
                 </li>
                 @endif
-                 @if ((Auth::user()->est_admin==1)||(Auth::user()->est_responsable==1))
+                 @if ((Auth::user()->role==='admin')||(Auth::user()->role==='responsable'))
                <li  class="{{ Request::is('employe*') ? 'active' : '' }}">
                     <a href="/employe">
                         <i class="fa fa-group"></i> <span>Employés</span>
