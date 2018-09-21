@@ -40,6 +40,7 @@
                                     <th>Devis</th>
                                     <th>Client</th>
                                     <th>Responsable</th>
+                                    <th>Fichiers</th>
                                     <th>Action</th>
 
                                 </tr>
@@ -61,7 +62,10 @@
                                             <a  data-toggle="modal" data-target="#modal-default">
                {{ $value->responsable_id }}
               </a></td>
-
+               <td>
+                                            <a   href="/projet/fichier/{{$value->id}}">cliquer ici
+               
+              </a></td>
                 <td>   <form action="/projet/{{$value->id}}" method="post">
                                         
                                         <a href="{{url ('projet/'.$value->id.'/edit')}}" class="btn-warning btn glyphicon glyphicon-pencil" ></a>

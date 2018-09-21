@@ -32,6 +32,8 @@ Route::resource('categorie','CategorieController');
 
 Route::resource('devis','DevisController');
 
+Route::get('/projet/fichier/{id}','FichierController@index');
+
 
 
 

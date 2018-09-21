@@ -62,19 +62,12 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Rester connecté
-                                    </label>
-                          </div>
-            </label>
-          </div>
+         <a class="btn btn-link" href="{{ route('password.request') }}">mot de passe oublié</a><br>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Connexion</button>
+
+          <button type="submit" class="btn btn-primary btn-block ">Connexion</button>
         </div>
         <!-- /.col -->
       </div>
@@ -82,13 +75,16 @@
 
    
 
-     <a class="btn btn-link" href="{{ route('password.request') }}">mot de passe oublié</a><br>
-    <a href="register" class="text-center">Créer un nouveau compte</a>
+     
+    
 
   </div>
   <!-- /.login-box-body -->
+  <br>
+<a href="register" ><button class="btn btn-primary btn-block btn-lg">Créer un nouveau compte</button></a>
 </div>
 <!-- /.login-box -->
+  
 
 <!-- jQuery 3 -->
 <script src="{{asset('Admin/bower_components/jquery/dist/jquery.min.js')}}"></script>

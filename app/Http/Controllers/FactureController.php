@@ -22,8 +22,7 @@ class FactureController extends Controller
    */
   public function index()
   {
-     $facture= Facture::all();
-      return view('facture.view', ['fact' => $facture]);
+    
   }
 
   /**
@@ -33,10 +32,7 @@ class FactureController extends Controller
    */
   public function create()
   {
-     $cl=Client::all();
-     $d=Devis::all();
-     $p=Projet::all();
-      return view('devis.ajout',['cl'=>$cl],['devis'=>$d],['projet'=>$p]);
+    
   }
 
   /**
@@ -46,19 +42,7 @@ class FactureController extends Controller
    */
   public function store(Request $request)
   {
-     $clientId=Client::where('nom',($request->input('client')))->value('id');
-     $devisId=Devis::where('nom',($request->input('devis')))->value('id');
-     $projetId=Projet::where('nom',($request->input('projet')))->value('id');
-
-          $facture = new Facture();
-          $facture->nom = ($request->input('nom'));
-
-          $facture->client_id=$clientId;
-          $facture->devis_id=$devisId;
-          $facture->projet_id=$projetId;
-          $facture->save();
-
-           return redirect('facture');
+    
   }
 
   /**
@@ -80,11 +64,7 @@ class FactureController extends Controller
    */
   public function edit($id)
   {
-    $cl=Client::all();
-     $d=Devis::all();
-     $p=Projet::all();
-     $facture=Facture::find($id);
-      return view('devis.edit',['cl'=>$cl],['devis'=>$d],['projet'=>$p]);
+    
   }
 
   /**
@@ -93,21 +73,9 @@ class FactureController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id,Request $request)
+  public function update($id)
   {
-    $clientId=Client::where('nom',($request->input('client')))->value('id');
-     $devisId=Devis::where('nom',($request->input('devis')))->value('id');
-     $projetId=Projet::where('nom',($request->input('projet')))->value('id');
-
-          $facture =Facture::find($id);
-          $facture->nom = ($request->input('nom'));
-
-          $facture->client_id=$clientId;
-          $facture->devis_id=$devisId;
-          $facture->projet_id=$projetId;
-          $facture->save();
-
-           return redirect('facture');
+    
   }
 
   /**
@@ -118,10 +86,7 @@ class FactureController extends Controller
    */
   public function destroy($id)
   {
-     $facture =Facture::find($id);
-     $facture->delete();
-     return redirect('facture');
-  }
+    
   }
   
 }

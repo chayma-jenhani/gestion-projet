@@ -24,9 +24,10 @@ class FichierController extends Controller
    *
    * @return Response
    */
-  public function index()
+  public function index($id)
   {
-    
+    $fichier=Fichier::where('id_projet',$id);
+    return view ('projet.projetFichier', ['tab' => $fichier]);
   }
 
   /**

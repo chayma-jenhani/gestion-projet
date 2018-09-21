@@ -10,7 +10,6 @@ class CreateFacturesTable extends Migration {
 		Schema::create('factures', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('statut');
 			$table->integer('devis_id')->unsigned();
 			$table->integer('projet_id')->unsigned();
 			$table->integer('client_id')->unsigned();

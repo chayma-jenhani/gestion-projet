@@ -50,9 +50,7 @@
                                             @endif
                                         </div>
 
-                                        <label >Date</label>
-                                        <input type="date" class="form-control" value="{{ $cl->nom }}" name="date" >
-
+                                       
 
                                         <div class=" form-group {{ $errors->has('adresse') ? 'has-error' : '' }} ">
                                             <label >Adresse</label>

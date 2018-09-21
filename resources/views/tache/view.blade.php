@@ -6,12 +6,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Gestion des tâches
-                <small>Gestion des tâches</small>
+                Gestion des clients
+                <small>Gestion des clients</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
-                <li class="active">tâches</li>
+                <li class="active">Clients</li>
             </ol>
         </section>
 
@@ -21,9 +21,9 @@
                 <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Liste des tâches</h3>
+                <h3 class="box-title">Liste des clients</h3>
 
-                
+                <a type="button" href="/tache/create" class="btn btn-primary pull-right " ><div class="glyphicon glyphicon-plus"></div> Ajouter un Client</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -31,12 +31,13 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Titre</th>
-                        <th>Deadline</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Adresse</th>
+                        <th>Date</th>
+                        <th>Téléphone</th>
+                        <th>Email</th>
                         <th>Statut</th>
-                        <th>Priorité</th>
-                        <th>Projet</th>
-                        
                         <th>Action</th>
 
                     </tr>
@@ -46,12 +47,13 @@
                     @foreach($tab as $value)
                         <tr>
                             <td>{{ $value->id }}</td>
-                            <td>{{$value->titre }}</td>
-                            <td>{{$value->deadline }}</td>
+                            <td>{{$value->nom }}</td>
+                            <td>{{$value->prenom }}</td>
+                            <td>{{$value->adresse }}</td>
+                            <td>{{$value->date }}</td>
+                            <td>{{$value->tel}}</td>
+                            <td>{{$value->email }}</td>
                             <td>{{$value->statut }}</td>
-                            <td>{{$value->priorité }}</td>
-                            <td>{{$value->projet->nom}}</td>
-                            
 
                                 <td>
 

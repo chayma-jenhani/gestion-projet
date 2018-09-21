@@ -28,11 +28,24 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition register-page">
-<div class="register-box">
-  <div class="register-logo">
+
+  
+<div class="row">
+  <div class="col-md-5">
+    <div class="register-box " style=" padding-top: 22% ;font-style:italic; font-size: 20px">
+
+ <div class="login-box-msg"> <i class="icon fa fa-info" style="font-size:30px ;"></i>  
+  Cette application web permet d’améliorer la productivité, en facilitant la communication, la collaboration, la circulation de l’information et la gestion des projets.
+  Ainsi d’obtenir une visibilité en temps réel du travail de  l'équipe et créer des rapports pour suivre la performance des projets et de l’équipe.</div>
+  
+               
+              </div>
+            </div>
+  <div class="col-md-4">
+    <div class="register-box">
+       <div class="login-logo">
     <b >Gestion de projet</b>
   </div>
-
   <div class="register-box-body">
     <p class="login-box-msg">Créer un compte</p>
 
@@ -78,35 +91,52 @@
         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"   placeholder="Confirmer le mot de passe" required>
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
-       <div class="form-group has-feedback form-group">
-    <label>Role</label>
+       <div class="form-group has-feedback form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+        
+    
          <select class="form-control" name="role" > 
-                               
+                      <option disabled selected >---Role---</option>       
                       <option value="admin" >Admin</option>
                         <option value="responsable" >Chef de Projet</option>
                         <option value="employe" >Employe</option>
                       </select>
 
+                                @if ($errors->has('role'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
      
       <div class="row">
+        <center>
+          
+             <button type="submit" class="btn btn-primary  ">Inscription</button>
+          
+        </center>
+        
        
+         
        
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary  ">Inscription</button>
-        </div>
         <!-- /.col -->
       </div>
     </form>
 
     
 
-    <a href="login" class="text-center">Se connecter à un compte existant</a>
+    
   </div>
   <!-- /.form-box -->
+  <br>
+  <a href="login"><button class="btn btn-primary btn-block btn-lg"> Se connecter à un compte existant</button></a>
 </div>
 <!-- /.register-box -->
+</div>
+
+
+</div>
 
 <!-- jQuery 3 -->
 <script src="{{asset('Admin/bower_components/jquery/dist/jquery.min.js')}}"></script>
