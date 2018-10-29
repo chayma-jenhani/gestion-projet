@@ -11,18 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/admin/admin',function () {
-    return view('admin.Accueiladmin');});
+Route::get('/', function () {
+    return view('auth.register');
+});
 
 Route::resource('client','ClientController');
 
 Route::resource('projet','ProjetController');
-
-Route::get('/afficheProjet/{id}', 'ProjetController@show');
 
 Route::resource('tache','TacheController');
 
@@ -32,10 +28,16 @@ Route::resource('categorie','CategorieController');
 
 Route::resource('devis','DevisController');
 
-Route::get('/projet/fichier/{id}','FichierController@index');
+Route::resource('facture','FactureController');
+
+Route::get('/projet/{id}/affiche', 'ProjetController@show');
+
+Route::get('/projet/{id}/fichier','FichierController@index');
+
+Route::get('/tache/create/{id}', 'TacheController@create');
 
 
-
+Route::post('/tache/{id}', 'TacheController@store');
 
 Auth::routes();
 

@@ -12,7 +12,7 @@ class Categorie extends Model
 
     public function projet()
     {
-        return $this->belongsToMany('Projet');
+        return $this->belongsToMany(Projet::class);
     }
 
 }

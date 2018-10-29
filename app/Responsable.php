@@ -11,7 +11,7 @@ class Responsable extends Employe
    
     public function projet()
     {
-        return $this->hasMany('Projet');
+        return $this->hasMany(Projet::class);
     }
 
 }

@@ -6,12 +6,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Gestion des Tâches
-                <small>Gestion des Tâches</small>
-            </h1>
+        Tableau de bord
+        <small>Tableau de bord</small>
+      </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
-                <li class="active">Tâches</li>
+                <li class="active"><a href="/home"><i class="fa fa-dashboard"></i>Accueil</a></li>
+             
             </ol>
         </section>
 
@@ -23,7 +23,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title"></h3>
 
-                <a type="button" href="/tache/create/{{$projet->id}}" class="btn btn-primary pull-right " ><div class="glyphicon glyphicon-plus"></div> Ajouter une Tâche</a>
+              
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -59,16 +59,7 @@
                             <td>{{$value->priorite}}</td>
                             <td>{{$value->projet->nom}}</td>
 
-                                <td>
-
-                                    <form action="/tache/{{$value->id}}" method="post">
-                                        {{csrf_field()}}
-                                        {{method_field('DELETE')}}
-                                  <a href="{{url ('tache/'.$value->id.'/edit')}}" class="btn-warning btn glyphicon glyphicon-pencil" ></a>
-                                        {{csrf_field()}}
-                                        {{method_field('DELETE')}}
-                                     
-                             <button type="submit" class="btn-danger btn glyphicon glyphicon-trash"></button></form> </td>
+                              
                         </tr>
                         @endforeach
 

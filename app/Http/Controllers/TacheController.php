@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Tache;
+use App\Employe;
 use Illuminate\Http\Request;
 use Jenssegers\Date\Date;
+use Auth;
 
 class TacheController extends Controller 
 {
@@ -23,9 +25,14 @@ class TacheController extends Controller
    * @return Response
    */
   public function index()
-  {
-    $cl= Tache::all();
-      return view('tache.view', ['tab' => $cl]);
+  {  
+      if (Auth::user()->role==='employe'){
+
+      $empId=Employe::where('nom',Auth::user()->nom)->value('id');
+      $taches=Tache::where('employe_id',$empId);}
+      else{
+    $taches= Tache::all();}
+      return view('tache.view', ['tab' => $taches]);
   }
 
   /**
@@ -33,9 +40,9 @@ class TacheController extends Controller
    *
    * @return Response
    */
-  public function create(Request $request)
-  {
-      return view('tache.ajout');
+  public function create(Request $request,$idprojet)
+  { $emp=Employe::all();
+      return view('tache.ajout',['emp'=>$emp,'idprojet'=>$idprojet]);
   }
 
 
@@ -44,8 +51,13 @@ class TacheController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(Request $request,$idProjet)
   {
+     $this->validate($request,[
+                'titre'=>'required',
+         
+
+            ]);
       $tache = new Tache();
           $tache->titre = ($request->input('titre'));
           $tache->description = ($request->input('description'));
@@ -54,7 +66,8 @@ class TacheController extends Controller
           $tache->priorite = ($request->input('priorite'));
           $tache->created_at=Date::now();
           $tache->updated_at=Date::now();
-          $tache->projet_id=1;
+          $tache->projet_id=$idProjet;
+          $tache->employe_id=Employe::where('nom',($request->input('employe')))->value('id');
        
           $tache->save();
 
@@ -79,9 +92,9 @@ class TacheController extends Controller
    * @return Response
    */
   public function edit($id,Request $request)
-  {
+  {  $emp=Employe::all();
               $tache=Tache::find($id);
-          return view('tache.edit',['t' => $tache]);
+          return view('tache.edit',['t' => $tache],['emp'=>$emp]);
       }
   
 
@@ -91,8 +104,12 @@ class TacheController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
-  {
+  public function update(Request $request)
+  { $this->validate($request,[
+                'titre'=>'required',
+         
+
+            ]);
      $tache = new Tache();
               $tache->titre = ($request->input('titre'));
               $tache->description = ($request->input('description'));
@@ -101,7 +118,8 @@ class TacheController extends Controller
               $tache->deadline = ($request->input('deadline'));
               $tache->updated_at=Date::now();
               $tache->statut = ($request->input('statut'));
-              $tache->projet_id=1;
+            
+              $tache->employe_id=Employe::where('nom',($request->input('employe')))->value('id');
               $tache->save();
 
               redirect('projet');
@@ -118,7 +136,7 @@ class TacheController extends Controller
   {
       $t=Tache::find($id);
       $t->delete();
-      return redirect('afficheProjet/1');
+      return redirect('projet');
   }
 
   

@@ -42,13 +42,7 @@
                                                 <span class="help-block"> {{$errors->first('nom')}}</span>
                                                 @endif
                                         </div>
-                                        <div class=" form-group {{ $errors->has('prenom') ? 'has-error' : '' }} ">
-                                        <label >Prénom</label>
-                                        <input type="text" class="form-control" name="prenom" value="{{ Request::old('prenom') }}" placeholder="Enter prénom">
-                                            @if( $errors->has('prenom'))
-                                                <span class="help-block"> {{$errors->first('prenom')}}</span>
-                                            @endif
-                                        </div>
+                                        
 
 
                                         <div class=" form-group {{ $errors->has('adresse') ? 'has-error' : '' }} ">

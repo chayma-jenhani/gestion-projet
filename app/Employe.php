@@ -12,17 +12,17 @@ class Employe extends Model
 
     public function conge()
     {
-        return $this->belongsToMany('Conge');
+        return $this->belongsToMany(Conge::class);
     }
 
     public function tache()
     {
-        return $this->belongsToMany('Tache');
+        return $this->hasMany(Tache::class);
     }
 
     public function projet()
     {
-        return $this->belongsToMany('Projet');
+        return $this->belongsToMany(Projet::class);
     }
 
 }

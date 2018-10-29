@@ -21,7 +21,7 @@
                 <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Liste des Catégories</h3>
+                <h3 class="box-title">Liste des Catégorie</h3>
 
                 <a type="button" href="/categorie/create" class="btn btn-primary pull-right " ><div class="glyphicon glyphicon-plus"></div> Ajouter une Catégories</a>
             </div>

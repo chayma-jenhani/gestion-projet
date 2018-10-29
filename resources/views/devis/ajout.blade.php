@@ -1,19 +1,18 @@
-
 @extends('layouts.menu')
 @section('content')
- <!-- Content Wrapper. Contains page content -->
+
+    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        
         <section class="content-header">
             <h1>
-                Gestion Des Catégories
-                <small>Gestion des catégories</small>
+                Gestion Des Devis
+                <small>Gestion des devis</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
-                <li ><a href="/categorie">Categorie</a></li>
-                <li class="active">Ajout Catégorie</li>
+                <li ><a href="/devis">Devis</a></li>
+                <li class="active"> Ajouter Devis</li>
             </ol>
         </section>
 
@@ -26,11 +25,11 @@
                     <!-- general form elements -->
                     <div class="box box-primary ">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Nouvelle Catégorie</h3>
+                            <h3 class="box-title">Nouveau Devis</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form  role="form" action="/categorie" method="POST">
+                        <form  role="form" action="/devis" method="POST">
                             {{csrf_field()}}
                             <div class="box-body">
                                 <div class="form-group">
@@ -43,16 +42,13 @@
                                                 <span class="help-block"> {{$errors->first('nom')}}</span>
                                                 @endif
                                         </div>
-                                        
-                                        <label >statut</label>
-                                        <input type="text" class="form-control" name="statut" placeholder="Entrer statut" >
-                                      
+                                         <label >Client</label>
+                                    <select  class="form-control select2"  name="client">
+                                            @foreach($cl as $value)
+                                                <option>{{$value->nom}}</option>
+                                            @endforeach
 
-
-                                        <label >Description</label>
-                                        <textarea class="form-control" name="description" placeholder="Entrer la description de catégorie"></textarea>
-
-                                        <div class="box-footer">
+                                        </select><br>
 
                                         <input type="submit" class="btn btn-info " value="Ajouter">
                                         <input type="reset" class="btn pull-right" value="Annuler">
@@ -78,5 +74,4 @@
     </div>
     <!-- /.content-wrapper -->
 
-
-   @endsection
+@endsection

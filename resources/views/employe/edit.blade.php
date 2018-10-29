@@ -51,10 +51,6 @@
                                             @endif
                                         </div>
 
-                                        <label >Date Ajout</label>
-                                        <input type="date" class="form-control" value="{{$emp->dateAjout}}" name="dateAjout" >
-                                        <label >Date Modification</label>
-                                        <input type="date" class="form-control" value="{{$emp->dateModif}}" name="dateModif" >
 
 
                                         <div class=" form-group {{ $errors->has('adresse') ? 'has-error' : '' }} ">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Devis;
 use App\Client;
+use App\Projet;
 
 class DevisController extends Controller 
 {
@@ -25,7 +26,7 @@ class DevisController extends Controller
   public function index()
   {
      $d= Devis::all();
-      return view('devis.view', ['devis' => $d]);
+      return view('devis.view', ['tab' => $d]);
   }
 
   /**
@@ -46,10 +47,15 @@ class DevisController extends Controller
    */
   public function store(Request $request)
   {
-    $clientId=Client::where('nom',($request->input('client')))->value('id');
+    $this->validate($request,[
+                'nom'=>'required|unique:devis',
+         
+
+            ]);
           $devis = new Devis();
           $devis->nom = ($request->input('nom'));
-          $devis->client_id=$clientId;
+            $devis->client_id=Client::where('nom',($request->input('client')))->value('id');
+        
           $devis->save();
 
            return redirect('devis');
@@ -76,7 +82,7 @@ class DevisController extends Controller
   {
      $cl=Client::all();
           $devis =Devis::find($id);
-          return view('projet.edit', ['devis' => $devis],['cl'=>$cl]);
+          return view('devis.edit', ['devis' => $devis],['cl'=>$cl]);
   }
 
 
@@ -88,11 +94,15 @@ class DevisController extends Controller
    * @return Response
    */
   public function update(Request $request,$id)
-  {
+  {$this->validate($request,[
+                'nom'=>'required|unique:devis',
+         
+
+            ]);
       $devis = Devis::find($id);
-     $clientId=Client::where('nom',($request->input('client')))->value('id');
-          $devis->client_id=$clientId;
-          $devis->nom = ($request->input('nom'));
+     
+          $devis->client_id=Client::where('nom',($request->input('client')))->value('id');
+          $devis->nom = $request->input('nom');
           $devis->save();
           return redirect('devis');
   }

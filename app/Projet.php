@@ -13,40 +13,40 @@ class Projet extends Model
 
     public function tache()
     {
-        return $this->hasMany('Tache');
+        return $this->hasMany(Tache::class);
     }
 
     public function fichier()
     {
-        return $this->hasMany('Fichier');
+        return $this->hasMany(Fichier::class);
     }
 
     public function categorie()
     {
-        return $this->belongsToMany('Categorie');
+        return $this->belongsToMany(Categorie::class);
     }
 
     public function facture()
     {
-        return $this->hasOne('Facture');
+        return $this->hasOne(Facture::class);
     }
 
     public function devis()
     {
-        return $this->belongsTo('Devis');
+        return $this->belongsTo(Devis::class);
     }
 
     public function employe()
     {
-        return $this->belongsToMany('Employe');
+        return $this->belongsToMany(Employe::class);
     }
 
     public function responsable()
     {
-        return $this->belongsTo('Responsable');
+        return $this->belongsTo(Responsable::class);
     }
     public function client()
     {
-        return $this->belongsTo('Client');
+        return $this->belongsTo(Client::class);
     }
 }

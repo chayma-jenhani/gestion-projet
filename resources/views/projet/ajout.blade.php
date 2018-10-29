@@ -11,8 +11,8 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
-                <li><a href="/projet">Projets</a></li>
-                <li class="active">Projets</li>
+                <li class="active"><a href="/projet">Projets</a></li>
+                
             </ol>
         </section>
 
@@ -34,18 +34,45 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label >Titre</label>
-                                        <input type="text" class="form-control" name="titre" placeholder="Enter titre">
+                                         <div class=" form-group {{ $errors->has('titre') ? 'has-error' : '' }} ">
+                                            <label >Titre</label>
+
+                                            <input type="text" class="form-control" name="titre" value="{{ Request::old('titre') }}" placeholder="Enter titre">
+                                            @if( $errors->has('titre'))
+                                                <span class="help-block"> {{$errors->first('titre')}}</span>
+                                            @endif
+                                        </div>
+                                         <div class=" form-group {{ $errors->has('delai') ? 'has-error' : '' }} ">
                                         <label >Délai</label>
                                         <input type="date" class="form-control" name="delai" >
-                                        <label >File input</label>
-                                        <input type="file" name="file[]" multiple>
+                                        @if( $errors->has('delai'))
+                                                <span class="help-block"> {{$errors->first('delai')}}</span>
+                                            @endif
+                                        </div>
+                                        <label >Fichiers</label>
+                                        <input type="file" name="fichiers" multiple>
 
                                         <label >Description</label>
                                         <textarea class="form-control" name="description" placeholder="Entrer la description du projet"></textarea>
+
+                                          <label >Client</label>
+                                    <select  class="form-control select2"  name="client">
+                                        @foreach ($cl as $value)
+                                                <option>{{$value->nom}}
+                                                </option>
+                                            @endforeach
+
+                                        </select>
                                         <label >Employés</label>
-                             <select multiple class="form-control select2"  name="employe[]">
+                             <select multiple class="form-control select2"  name="employes">
                                      @foreach($emp as $value)
+                                  <option>{{$value->nom}}</option>
+                                                @endforeach
+
+                            </select>
+                            <label >Categories</label>
+                              <select multiple class="form-control select2"  name="categories">
+                                     @foreach($cat as $value)
                                   <option>{{$value->nom}}</option>
                                                 @endforeach
 
@@ -53,6 +80,14 @@
                                         <label >Responsable</label>
                                     <select  class="form-control select2"  name="responsable">
                                             @foreach($emp as $value)
+                                                <option>{{$value->nom}}</option>
+                                            @endforeach
+
+                                        </select>
+                                      
+                                        <label >Devis</label>
+                                    <select  class="form-control select2"  name="devis">
+                                            @foreach($devis as $value)
                                                 <option>{{$value->nom}}</option>
                                             @endforeach
 

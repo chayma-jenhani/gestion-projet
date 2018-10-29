@@ -28,6 +28,11 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
+		Schema::table('taches', function(Blueprint $table) {
+			$table->foreign('employe_id')->references('id')->on('employes')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
 		
 		Schema::table('factures', function(Blueprint $table) {
 			$table->foreign('devis_id')->references('id')->on('devis')
@@ -54,11 +59,7 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('conges', function(Blueprint $table) {
-			$table->foreign('employe_id')->references('id')->on('employes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
+		
 		Schema::table('projet_employe', function(Blueprint $table) {
 			$table->foreign('projet_id')->references('id')->on('projets')
 						->onDelete('restrict')
@@ -89,16 +90,8 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
-		Schema::table('conge_employe', function(Blueprint $table) {
-			$table->foreign('conge_id')->references('id')->on('conges')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
-		Schema::table('conge_employe', function(Blueprint $table) {
-			$table->foreign('employe_id')->references('id')->on('employes')
-						->onDelete('restrict')
-						->onUpdate('restrict');
-		});
+		
+		
 	}
 
 	public function down()
@@ -115,6 +108,10 @@ class CreateForeignKeys extends Migration {
 		Schema::table('taches', function(Blueprint $table) {
 			$table->dropForeign('taches_projet_id_foreign');
 		});
+		Schema::table('taches', function(Blueprint $table) {
+			$table->dropForeign('taches_employe_id_foreign');
+		});
+		
 		
 		Schema::table('factures', function(Blueprint $table) {
 			$table->dropForeign('factures_devis_id_foreign');
@@ -131,9 +128,7 @@ class CreateForeignKeys extends Migration {
 		Schema::table('fichiers', function(Blueprint $table) {
 			$table->dropForeign('fichiers_projet_id_foreign');
 		});
-		Schema::table('conges', function(Blueprint $table) {
-			$table->dropForeign('conges_employe_id_foreign');
-		});
+		
 		Schema::table('projet_employe', function(Blueprint $table) {
 			$table->dropForeign('projet_employe_projet_id_foreign');
 		});
@@ -152,11 +147,6 @@ class CreateForeignKeys extends Migration {
 		Schema::table('tache_employe', function(Blueprint $table) {
 			$table->dropForeign('tache_employe_tache_id_foreign');
 		});
-		Schema::table('conge_employe', function(Blueprint $table) {
-			$table->dropForeign('conge_employe_conge_id_foreign');
-		});
-		Schema::table('conge_employe', function(Blueprint $table) {
-			$table->dropForeign('conge_employe_employe_id_foreign');
-		});
+		
 	}
 }

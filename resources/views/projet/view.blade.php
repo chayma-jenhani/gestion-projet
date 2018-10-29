@@ -56,18 +56,17 @@
                                         <td>{{$value->updated_at }}</td>
                                         <td>{{$value->delai }}</td>
 
-                                        <td>{{$value->devis_id }}</td>
-                                        <td>{{$value->client_id }}</td>
-                                        <td>
-                                            <a  data-toggle="modal" data-target="#modal-default">
-               {{ $value->responsable_id }}
-              </a></td>
+                                        <td>{{$value->devis->nom }}</td>
+                                        <td>{{$value->client->nom }}</td>
+                                        <td>{{$value->responsable_id}}
+              </td>
                <td>
                                             <a   href="/projet/fichier/{{$value->id}}">cliquer ici
                
               </a></td>
                 <td>   <form action="/projet/{{$value->id}}" method="post">
-                                        
+                                         <a href="{{url ('projet/'.$value->id.'/affiche')}}" class="btn-success 
+                                        btn glyphicon glyphicon-eye-open" ></a>
                                         <a href="{{url ('projet/'.$value->id.'/edit')}}" class="btn-warning btn glyphicon glyphicon-pencil" ></a>
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
@@ -79,27 +78,7 @@
                                 </tbody>
 
                             </table>
-                             <div class="modal fade" id="modal-default">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Informations</h4>
-              </div>
-              <div class="modal-body">
-                <p></p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fermer</button>
-                
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
+                             
                         </div>
                         <!-- /.box-body -->
                     </div>

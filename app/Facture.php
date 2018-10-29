@@ -12,12 +12,16 @@ class Facture extends Model
 
     public function projet()
     {
-        return $this->belongsTo('Projet');
+        return $this->belongsTo(Projet::class);
     }
 
     public function devis()
     {
-        return $this->belongsTo('Devis');
+        return $this->belongsTo(Devis::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
 
 }

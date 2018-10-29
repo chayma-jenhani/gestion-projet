@@ -49,6 +49,11 @@ class CategorieController extends Controller
    */
   public function store(Request $request)
   {
+     $this->validate($request,[
+                'nom'=>'required',
+         
+
+            ]);
       $categorie = new Categorie();
           $categorie->nom = ($request->input('nom'));
           $categorie->description = ($request->input('description'));
@@ -92,6 +97,12 @@ class CategorieController extends Controller
    */
   public function update($id)
   {
+
+    $this->validate($request,[
+                'nom'=>'required',
+         
+
+            ]);
      $categorie =Categorie::find($id);
           $categorie->nom = ($request->input('nom'));
           $categorie->description = ($request->input('description'));

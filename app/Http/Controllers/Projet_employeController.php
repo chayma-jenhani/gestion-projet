@@ -26,16 +26,11 @@ class Projet_employeController extends Controller
    */
   public function create(Request $request)
   {
-      if ($request->isMethod('post')) {
-           foreach ($request->input('employes') as $value) {
-               $p = new Projet_employe();
-               $p->projet_id = Projet::all()->last()->get('id');
-               $p->employe_id = Employe::all()->where('nom', $value)->get('id');
-           }
+     
 
 
 
-      }
+      
   }
 
   /**

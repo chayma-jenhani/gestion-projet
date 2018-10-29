@@ -46,20 +46,20 @@ class EmployeController extends Controller
   public function store(Request $request)
   {
      $this->validate($request,[
-              'nom'=>'required',
-              'prenom'=>'required',
+              'nom'=>'required|unique:employes',
+              
               'adresse'=>'required',
               'tel1'=>'required|numeric',
               'email'=>'required|email',
               'CIN'=>'required|size:8',
               'salaire'=>'required|numeric',
-              //'photo'=>'image',
+              
               'bank'=>'required',
           ]);
 
           $emp = new Employe();
           $emp->nom = ($request->input('nom'));
-          $emp->prenom = ($request->input('prenom'));
+          
           $emp->adresse = ($request->input('adresse'));
           $emp->CIN = ($request->input('CIN'));
           $emp->tel1 = ($request->input('tel1'));
@@ -67,8 +67,8 @@ class EmployeController extends Controller
           $emp->email = ($request->input('email'));
           $emp->statut = ($request->input('statut'));
           $emp->salaire = ($request->input('salaire'));
-          $emp->photo = ($request->input('photo'));
-          $emp->BK_banc= ($request->input('BK_banc'));
+          
+          
           $emp->Bank = ($request->input('bank'));
           $emp->created_at=Date::now();
           $emp->updated_at=Date::now();
@@ -113,8 +113,8 @@ class EmployeController extends Controller
   public function update($id,Request $request)
   {
      $this->validate($request,[
-              'nom'=>'required',
-              'prenom'=>'required',
+              'nom'=>'required|unique:employes',
+              
               'adresse'=>'required',
               'tel1'=>'required|numeric',
               'email'=>'required|email',
@@ -126,7 +126,7 @@ class EmployeController extends Controller
 
           $emp = Employe::find($id);
           $emp->nom = ($request->input('nom'));
-          $emp->prenom = ($request->input('prenom'));
+          
           $emp->adresse = ($request->input('adresse'));
           $emp->CIN = ($request->input('CIN'));
           

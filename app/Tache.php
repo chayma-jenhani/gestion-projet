@@ -12,12 +12,12 @@ class Tache extends Model
 
     public function projet()
     {
-        return $this->belongsTo('Projet');
+        return $this->belongsTo(Projet::class);
     }
 
     public function employe()
     {
-        return $this->belongsToMany('Employe');
+        return $this->belongsTo(Employe::class);
     }
 
    

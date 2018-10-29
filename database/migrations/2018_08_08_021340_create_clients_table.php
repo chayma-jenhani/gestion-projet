@@ -11,7 +11,7 @@ class CreateClientsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('nom');
-			$table->string('prenom');
+			
 			$table->string('adresse');
 			
 			$table->integer('tel');

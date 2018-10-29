@@ -32,11 +32,11 @@
   
 <div class="row">
   <div class="col-md-5">
-    <div class="register-box " style=" padding-top: 22% ;font-style:italic; font-size: 20px">
+    <div class="register-box " style=" padding-top: 30% ;font-style:italic; font-size: 20px">
 
  <div class="login-box-msg"> <i class="icon fa fa-info" style="font-size:30px ;"></i>  
   Cette application web permet d’améliorer la productivité, en facilitant la communication, la collaboration, la circulation de l’information et la gestion des projets.
-  Ainsi d’obtenir une visibilité en temps réel du travail de  l'équipe et créer des rapports pour suivre la performance des projets et de l’équipe.</div>
+  </div>
   
                
               </div>
@@ -66,7 +66,7 @@
       </div>
       <div class="form-group has-feedback form-group{{ $errors->has('email') ? ' has-error' : '' }}">
         
-        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required placeholder="Email">
+        <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required placeholder="Email">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">

@@ -10,7 +10,7 @@
                 <small>Gestion Des employés</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
+                <li><a href="/home"><i class="fa fa-dashboard"></i>Accueil</a></li>
                 <li ><a href="/employe">Employés</a></li>
                 <li class="active"> Ajouter Employé</li>
             </ol>
@@ -42,20 +42,9 @@
                                                 <span class="help-block"> {{$errors->first('nom')}}</span>
                                                 @endif
                                         </div>
-                                        <div class=" form-group {{ $errors->has('prenom') ? 'has-error' : '' }} ">
-                                        <label >Prénom</label>
-                                        <input type="text" class="form-control" name="prenom" value="{{ Request::old('prenom') }}" placeholder="Enter prénom">
-                                            @if( $errors->has('prenom'))
-                                                <span class="help-block"> {{$errors->first('prenom')}}</span>
-                                            @endif
-                                        </div>
+                                        
 
-                                        <label >Date Ajout</label>
-                                        <input type="date" class="form-control" value="{{ Request::old('dateAjout') }}" name="dateAjout" >
-                                        <label >Date Modification</label>
-                                        <input type="date" class="form-control" value="{{ Request::old('dateModif') }}" name="dateModif" >
-
-
+                                      
                                         <div class=" form-group {{ $errors->has('adresse') ? 'has-error' : '' }} ">
                                         <label >Adresse</label>
                                         <input type="text" class="form-control" name="adresse" value="{{ Request::old('adresse') }}" placeholder="Enter adresse">
@@ -77,13 +66,7 @@
                                                 <span class="help-block"> {{$errors->first('salaire')}}</span>
                                             @endif
                                         </div>
-                                        <div class=" form-group {{ $errors->has('photo') ? 'has-error' : '' }} ">
-                                            <label >Photo</label>
-                                            <input type="file"  name="photo" value="{{ Request::old('photo') }}" >
-                                            @if( $errors->has('photo'))
-                                                <span class="help-block"> {{$errors->first('photo')}}</span>
-                                            @endif
-                                        </div>
+                                      
 
                                                     <div class=" form-group {{ $errors->has('tel1') ? 'has-error' : '' }} ">
                                                     <label >Téléphone 1</label>

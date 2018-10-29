@@ -12,11 +12,15 @@ class Client extends Model
 
     public function devis()
     {
-        return $this->hasMany('Devis');
+        return $this->hasMany(Devis::class);
     }
     public function projet()
     {
-        return $this->hasMany('Projet');
+        return $this->hasMany(Projet::class);
+    }
+    public function facture()
+    {
+        return $this->hasMany(Facture::class);
     }
 
 }

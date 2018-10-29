@@ -16,6 +16,7 @@ class CreateTachesTable extends Migration {
 			$table->string('statut');;
 			$table->string('priorite');
 			$table->integer('projet_id')->unsigned();
+			$table->integer('employe_id')->unsigned();
 			
 		});
 	}

@@ -34,10 +34,21 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label >Titre</label>
-                                        <input type="text" class="form-control" name="titre" value="{{$projet->titre}}" placeholder="Enter titre">
+                                       <div class=" form-group {{ $errors->has('titre') ? 'has-error' : '' }} ">
+                                            <label >Titre</label>
+
+                                            <input type="text" class="form-control" name="titre" value="{{ $projet->titre }}" placeholder="Enter titre">
+                                            @if( $errors->has('titre'))
+                                                <span class="help-block"> {{$errors->first('titre')}}</span>
+                                            @endif
+                                        </div>
+                                         <div class=" form-group {{ $errors->has('delai') ? 'has-error' : '' }} ">
                                         <label >Délai</label>
-                                        <input type="date" class="form-control" value="{{$projet->delai}}" name="delai" >
+                                        <input type="date" class="form-control" name="delai" value="{{$projet->delai}}" >
+                                        @if( $errors->has('delai'))
+                                                <span class="help-block"> {{$errors->first('delai')}}</span>
+                                            @endif
+                                        </div>
                                         <label >File input</label>
                                         <input type="file" name="fichier">
 
@@ -53,6 +64,13 @@
                                         <label >Responsable</label>
                                         <select  class="form-control select2" style="width: 100%;"  name="reponsable">
                                             @foreach($emp as $value)
+                                                <option>{{$value->nom}}</option>
+                                            @endforeach
+
+                                        </select>
+                                         <label >Devis</label>
+                                    <select  class="form-control select2"  name="devis">
+                                            @foreach($devis as $value)
                                                 <option>{{$value->nom}}</option>
                                             @endforeach
 

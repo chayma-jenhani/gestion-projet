@@ -13,6 +13,7 @@ class CreateFacturesTable extends Migration {
 			$table->integer('devis_id')->unsigned();
 			$table->integer('projet_id')->unsigned();
 			$table->integer('client_id')->unsigned();
+			$table->float('montant');
 		});
 	}
 

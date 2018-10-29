@@ -34,8 +34,15 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label >Nom</label>
-                                        <input type="text" class="form-control" name="nom" placeholder="Enter nom" value="{{$cat->nom}}">
+                                        <div class=" form-group {{ $errors->has('nom') ? 'has-error' : '' }} ">
+                                            <label >Nom</label>
+
+                                            <input type="text" class="form-control" name="nom" value="{{ $cl->nom }}" placeholder="Enter nom">
+                                            @if( $errors->has('nom'))
+                                                <span class="help-block"> {{$errors->first('nom')}}</span>
+                                            @endif
+                                        </div>
+                                        
                                        
                                         <label >statut</label>
                                         <input type="text" class="form-control" name="statut"  placeholder="Enter statut" value="{{$cat->statut}}">

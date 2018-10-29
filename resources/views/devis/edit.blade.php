@@ -1,19 +1,16 @@
-
 @extends('layouts.menu')
 @section('content')
- <!-- Content Wrapper. Contains page content -->
+    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        
         <section class="content-header">
             <h1>
-                Gestion Des Catégories
-                <small>Gestion des catégories</small>
-            </h1>
+                Gestion Des Devis</h1>
+                <small>Gestion des devis</small>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
-                <li ><a href="/categorie">Categorie</a></li>
-                <li class="active">Ajout Catégorie</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
+                <li> <a href="/devis">Devis</a></li>
+                <li class="active">Modifier Devis</li>
             </ol>
         </section>
 
@@ -26,53 +23,54 @@
                     <!-- general form elements -->
                     <div class="box box-primary ">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Nouvelle Catégorie</h3>
+                            <h3 class="box-title">Modifier Devis</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form  role="form" action="/categorie" method="POST">
+                        <form role="form" action="/devis/{{$devis->id}}" method="post">
+                            <input type="hidden" name="_method" value="PUT">
                             {{csrf_field()}}
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <div class=" form-group {{ $errors->has('nom') ? 'has-error' : '' }} ">
-                                        <label >Nom</label>
+                                            <label >Nom</label>
 
-                                        <input type="text" class="form-control" name="nom" value="{{ Request::old('nom') }}" placeholder="Enter nom">
+                                            <input type="text" class="form-control" name="nom" value="{{ $devis->nom }}" placeholder="Enter nom">
                                             @if( $errors->has('nom'))
                                                 <span class="help-block"> {{$errors->first('nom')}}</span>
-                                                @endif
+                                            @endif
                                         </div>
+                                         <label >Client</label>
+                                    <select  class="form-control select2"  name="client">
+                                            @foreach($cl as $value)
+                                                <option>{{$value->nom}}</option>
+                                            @endforeach
+
+                                        </select>
                                         
-                                        <label >statut</label>
-                                        <input type="text" class="form-control" name="statut" placeholder="Entrer statut" >
-                                      
-
-
-                                        <label >Description</label>
-                                        <textarea class="form-control" name="description" placeholder="Entrer la description de catégorie"></textarea>
-
+                                        <br>
                                         <div class="box-footer">
 
-                                        <input type="submit" class="btn btn-info " value="Ajouter">
-                                        <input type="reset" class="btn pull-right" value="Annuler">
+                                            <input type="submit" class="btn btn-info " value="Modifier">
+                                            <input type="reset" class="btn pull-right" value="Annuler">
                                         </div>
 
 
 
 
-                                </div>
+                                    </div>
                                 </div>
                             </div>
 
                         </form>
 
+                    </div>
+                    <!-- /.box -->
                 </div>
-                <!-- /.box -->
+                <!--/.col (right) -->
             </div>
-            <!--/.col (right) -->
-    </div>
-    <!-- /.row -->
+            <!-- /.row -->
         </section>
         <!-- /.content -->
     </div>

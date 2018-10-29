@@ -12,7 +12,7 @@ class Fichier extends Model
 
     public function projet()
     {
-        return $this->belongsTo('Projet');
+        return $this->belongsTo(Projet::class);
     }
 
 }

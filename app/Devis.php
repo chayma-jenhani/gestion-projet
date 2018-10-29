@@ -12,17 +12,17 @@ class Devis extends Model
 
     public function client()
     {
-        return $this->belongsTo('Client');
+        return $this->belongsTo('App\Client');
     }
 
     public function facture()
     {
-        return $this->hasOne('Facture');
+        return $this->hasOne('App\Facture');
     }
 
     public function projet()
     {
-        return $this->hasOne('Projet');
+        return $this->hasOne('App\Projet');
     }
 
 }

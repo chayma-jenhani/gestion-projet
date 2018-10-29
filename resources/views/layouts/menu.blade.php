@@ -54,7 +54,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="/admin/admin" class="logo">
+        <a href="/home" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>GP</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -112,15 +112,15 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
 
-                <li class="{{ Request::is('accueil*') ? 'active' : '' }}">
-                    <a href="/admin/admin">
+                <li class="{{ Request::is('home') ? 'active' : '' }}">
+                    <a href="/home">
                         <i class="fa fa-dashboard"></i> <span>Tableau de bord</span>
                     </a>
 
                 </li>
 
-                     @if ((Auth::user()->role==='admin')||(Auth::user()->role==='responsable'))
- <li  class="{{ Request::is('categorie*') ? 'active' : '' }}">
+              @if (Auth::user()->role==='admin')
+                <li  class="{{ Request::is('categorie*') ? 'active' : '' }}">
                    <a href="/categorie" >
                         <i class="fa fa-th-large"></i>
                         <span>Catégories</span>
@@ -128,8 +128,8 @@
                     </a>
 
                 </li>
-@endif
-                 @if (Auth::user()->role==='admin')
+                @endif
+                @if (Auth::user()->role==='admin')
 
                  <li  class="{{ Request::is('client*') ? 'active' : '' }}">
                     <a href="/client" >
@@ -144,38 +144,38 @@
                  
                 @endif
 
-                @if ((Auth::user()->role==='employe')||(Auth::user()->role==='admin')
-                ||(Auth::user()->role==='responsable'))
               
-                <li class="treeview {{ Request::is('projet*')||Request::is('tache*')||Request::is('devis*')||Request::is('facture*')? 'active' : '' }}">
+              
+                  @if  ((Auth::user()->role==='admin')
+                ||(Auth::user()->role==='responsable'))
 
-                <li class="treeview {{ Request::is('projet*')||Request::is('tache*')||Request::is('devis*')||Request::is('facture*')||Request::is('projet*') ? 'active' : '' }}">
-
-                    <a href="#">
+              <li  class="{{ Request::is('projet*') ? 'active' : '' }}">
+                    <a href="/projet" >
+                    
                         <i class="fa fa-pencil-square-o"></i>
-                        <span>Projets</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                        <span>Projet</span>
+
                     </a>
 
-                    <ul class="treeview-menu">
-
-                        <li  class="{{ Request::is('projet*') ? 'active' : '' }}">
-                        <a href="/projet"><i class="fa fa-list-ul"></i> Liste des projets</a></li>
-                        <li  class="{{ Request::is('tache*') ? 'active' : '' }}">
-                        <a href="/tache"><i class="fa fa-pie-chart"></i> Taches</a></li>
-                        
-                        <li  class="{{ Request::is('facture*') ? 'active' : '' }}">
-                        <a href="/facture"><i class="fa fa-money"></i> Factures</a></li>
-                        <li  class="{{ Request::is('facture*') ? 'active' : '' }}">
-                        <a href="/devis"><i class="fa fa-calendar-check-o"></i> Devis</a></li>
-
-                    </ul>
                 </li>
 
-                @endif
-                 @if ((Auth::user()->role==='admin')||(Auth::user()->role==='responsable'))
+                 @endif
+
+                   
+                       
+                     @if  (Auth::user()->role==='admin')
+                        <li  class="{{ Request::is('facture*') ? 'active' : '' }}">
+                        <a href="/facture"><i class="fa fa-money"></i> Factures</a></li>
+
+                        <li  class="{{ Request::is('devis*') ? 'active' : '' }}">
+                        <a href="/devis"><i class="fa fa-calendar-check-o"></i> Devis</a></li>
+                        @endif
+
+                   
+             
+
+           
+                 @if (Auth::user()->role==='admin')
                <li  class="{{ Request::is('employe*') ? 'active' : '' }}">
                     <a href="/employe">
                         <i class="fa fa-group"></i> <span>Employés</span>
@@ -201,6 +201,10 @@
 <script src="{{asset('Admin/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('Admin/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- Sparkline -->
+<script src="{{asset('Admin/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
+<!-- ChartJS -->
+<script src="{{asset('Admin/bower_components/chart.js/Chart.js')}}"></script>
 <!-- DataTables -->
 <script src="{{asset('Admin/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('Admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>

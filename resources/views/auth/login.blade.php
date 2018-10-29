@@ -61,10 +61,8 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">
-         <a class="btn btn-link" href="{{ route('password.request') }}">mot de passe oublié</a><br>
-        </div>
-        <!-- /.col -->
+       
+       
         <div class="col-xs-4">
 
           <button type="submit" class="btn btn-primary btn-block ">Connexion</button>

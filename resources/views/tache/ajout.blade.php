@@ -6,11 +6,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Gestion Des Clients
-                <small>Gestion des clients</small>
+                Gestion Des Tâches
+                <small>Gestion des Tâches</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
+                <li><a href="/home"><i class="fa fa-dashboard"></i>Accueil</a></li>
                 <li ><a href="/projet">Projets</a></li>
                 <li class="active"> Tâche</li>
             </ol>
@@ -29,20 +29,36 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form  role="form" action="/tache" method="POST">
+                        <form  role="form" action="/tache/{{$idprojet}}" method="POST">
                             {{csrf_field()}}
                             <div class="box-body">
                                 <div class="form-group">
                                     <div class="col-xs-6">
-                                        <label >Titre</label>
-                                        <input type="text" class="form-control" name="titre" placeholder="Enter titre">
+                                        <div class=" form-group {{ $errors->has('titre') ? 'has-error' : '' }} ">
+                                            <label >Titre</label>
+
+                                            <input type="text" class="form-control" name="titre" value="{{ Request::old('titre') }}" placeholder="Enter titre">
+                                            @if( $errors->has('titre'))
+                                                <span class="help-block"> {{$errors->first('titre')}}</span>
+                                            @endif
                                         <label >deadline</label>
                                         <input type="date" class="form-control"  name="deadline" placeholder=" Entrer deadline" >
                                         <label >statut</label>
-                                        <input type="text" class="form-control"  name="statut" placeholder="Entrer statut" >
+                                        <select  class="form-control select2"  name="statut">
+                                        <option>active </option>
+                                        <option> en progression</option>
+                                        <option>en pause</option>
+                                        <option> terminé</option>
+                                    </select>
                                         <label >priorité</label>
                                         <input type="text" class="form-control"   name="priorite" placeholder="Entrer priorité" >
+ <label >Employé</label>
+                                    <select  class="form-control select2"  name="employe">
+                                            @foreach($emp as $value)
+                                                <option>{{$value->nom}}</option>
+                                            @endforeach
 
+                                        </select>
 
                                         <label >Description</label>
                                         <textarea class="form-control" name="description" placeholder="Entrer la description "></textarea>

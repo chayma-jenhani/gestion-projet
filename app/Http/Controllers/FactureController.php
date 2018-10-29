@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Devis;
+use App\Client;
+use App\Projet;
+use App\Facture;
+
+
 
 class FactureController extends Controller 
 {
@@ -22,7 +28,8 @@ class FactureController extends Controller
    */
   public function index()
   {
-    
+     $f=Facture::all();
+      return view('facture.view', ['tab' => $f]);
   }
 
   /**
@@ -30,9 +37,13 @@ class FactureController extends Controller
    *
    * @return Response
    */
-  public function create()
+  public function create(Request $request)
   {
-    
+    $projets=Projet::all();
+    $devis=Devis::all();
+    $cl=Client::all();
+      return view('facture.ajout',['cl'=>$cl,
+        'devis'=>$devis,'projets'=>$projets]);
   }
 
   /**
@@ -42,7 +53,19 @@ class FactureController extends Controller
    */
   public function store(Request $request)
   {
-    
+    $this->validate($request,[
+                    'montant'=>'required|numeric' ]);
+          $facture = new Facture();
+         
+            $facture->client_id=Client::where('nom',($request->input('client')))->value('id');
+             $facture->projet_id=Projet::where('titre',($request->input('projet')))->value('id');
+              $facture->devis_id=Devis::where('nom',($request->input('devis')))->value('id');
+
+$facture->montant=$request->input('montant');
+        
+          $facture->save();
+
+           return redirect('facture');
   }
 
   /**
@@ -64,8 +87,13 @@ class FactureController extends Controller
    */
   public function edit($id)
   {
-    
+    $projet=Projet::all();
+    $devis=Devis::all();
+      $cl=Client::all();
+      return view('facture.ajout',['cl'=>$cl,'devis'=>$devis,'projet'=>$projet]);
   }
+
+
 
   /**
    * Update the specified resource in storage.
@@ -73,9 +101,23 @@ class FactureController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request,$id)
   {
     
+    $this->validate($request,[
+                    'montant'=>'required|numeric' ]);
+
+      $facture = Facture::find($id);
+     
+         $facture->montant=$request->input('montant');
+            $facture->client_id=Client::where('nom',($request->input('client')))->value('id');
+             $facture->projet_id=Projet::where('nom',($request->input('projet')))->value('id');
+              $facture->devis_id=Devis::where('nom',($request->input('devis')))->value('id');
+
+        
+          $facture->save();
+
+           return redirect('facture');
   }
 
   /**
@@ -86,7 +128,9 @@ class FactureController extends Controller
    */
   public function destroy($id)
   {
-    
+     $f=Facture::find($id);
+      $f->delete();
+      return redirect('facture');
   }
   
 }
